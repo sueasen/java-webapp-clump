@@ -12,13 +12,23 @@ import dto.WebAppSample;
 public class WebAppSampleService {
 
 	/**
-	 * WebAppSample のリストを作成します
+	 * WebAppSample を設定したリストを作成します
 	 *
 	 * @return WebAppSample リスト
 	 */
 	public List<WebAppSample> createList() {
+		return createList(2);
+	}
+
+	/**
+	 * WebAppSample を size 件数設定したリストを作成します
+	 *
+	 * @param size 件数
+	 * @return WebAppSample リスト
+	 */
+	public List<WebAppSample> createList(int size) {
 		List<WebAppSample> list = new ArrayList<>();
-		for (int i = 1; i < 3; i++) {
+		for (int i = 1; i <= size; i++) {
 			insert(list, "Sample_" + i);
 		}
 		return list;

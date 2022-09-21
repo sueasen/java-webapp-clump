@@ -26,6 +26,17 @@ class WebAppSampleServiceTest {
 	}
 
 	/**
+	 * createList(int) のテストを実施します
+	 *
+	 * @return WebAppSample リスト
+	 */
+	@Test
+	public void testCreateList002() {
+		List<WebAppSample> result = new WebAppSampleService().createList(4);
+		assertEquals(4, result.size());
+	}
+
+	/**
 	 * insert のテストを実施します
 	 *
 	 * @return WebAppSample リスト
