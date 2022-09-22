@@ -16,8 +16,8 @@ import dto.WebAppSample;
 /**
  * {@link SampleMemoServlet}
  */
-@WebServlet("/web_app_sample_delete")
-public class WebAppSampleDeleteServlet extends HttpServlet {
+@WebServlet("/web_app_sample_insert")
+public class WebAppSampleInsertServlet extends HttpServlet {
 
 	private WebAppSampleService service = new WebAppSampleService();
 
@@ -43,8 +43,8 @@ public class WebAppSampleDeleteServlet extends HttpServlet {
 
 		@SuppressWarnings("unchecked")
 		List<WebAppSample> list = (List<WebAppSample>) request.getSession().getAttribute("webAppSamples");
-		Integer id = Integer.valueOf(request.getParameter("id"));
-		service.delete(list, id);
+		String name = request.getParameter("name");
+		service.insert(list, name);
 
 		doGet(request, response);
 	}
