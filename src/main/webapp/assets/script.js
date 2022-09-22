@@ -19,11 +19,12 @@ window.addEventListener('load', (e) => {
     applyNavbar(links);
     applyCarousel(links, i);
   });
+  document.querySelectorAll('.chapter_img').forEach(dom => apiPerson(dom));
 });
 
 /**
  * ナビゲーションにページリンク設定
- *
+ * 
  * @param links
  *            ページリンク情報
  */
@@ -42,7 +43,7 @@ function applyNavbar(links) {
 
 /**
  * カルーセルにページリンク設定
- *
+ * 
  * @param links
  *            ページリンク情報
  * @param index
@@ -75,4 +76,73 @@ function applyCarousel(links, index) {
   carouselCaption.appendChild(carouselCaptionTitle);
   carouselCaption.appendChild(carouselCaptionDescription);
   carouselCaption.appendChild(carouselCaptionLink);
+
+  if (index % 2 === 1) {
+    apiFox(carouselItem);
+  } else {
+    apiCat(carouselItem);
+  }
+}
+
+/**
+ * api を実行して json を処理します
+ * 
+ * @param {String}
+ *            url リクエストURL
+ * @param {function}}
+ *            functionJson json に対する処理
+ * @param {Array}
+ *            params リクエストURL実行時のパラメータ
+ * @param {Array}
+ *            options リクエストURL実行時のオプション
+ */
+function apiJson(url, functionJson, params = {}, options = {}) {
+    let requestUrl = url;
+    if (Object.keys(params).length > 0) {
+        requestUrl = url + '?' + new URLSearchParams(params);
+    }
+    fetch(requestUrl, options)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(response.status + ':' + response.statusText);
+            }
+            return response.json();
+        })
+        .then(json => functionJson(json))
+        .catch((error) => {
+            console.log(error);
+        });
+}
+
+/**
+ * 人情報取得 api を実行して dom に画像を設定
+ * 
+ * @param {HTMLElement}
+ *            dom 画像設定するDOM
+ */
+function apiPerson(dom) {
+    let url = 'https://randomuser.me/api';
+    apiJson(url, (json) => dom.style.backgroundImage = 'url(' + json.results[0].picture.large + ')');
+}
+
+/**
+ * 狐取得 api を実行して dom に画像を設定
+ * 
+ * @param {HTMLElement}
+ *            dom 画像設定するDOM
+ */
+function apiFox(dom) {
+    let url = 'https://randomfox.ca/floof/';
+    apiJson(url, (json) => dom.style.backgroundImage = 'url(' + json.image + ')');
+}
+
+/**
+ * 猫取得 api を実行して dom に画像を設定
+ * 
+ * @param {HTMLElement}
+ *            dom 画像設定するDOM
+ */
+function apiCat(dom) {
+    let url = 'https://aws.random.cat/meow';
+    apiJson(url, (json) => dom.style.backgroundImage = 'url(' + json.file + ')');
 }
