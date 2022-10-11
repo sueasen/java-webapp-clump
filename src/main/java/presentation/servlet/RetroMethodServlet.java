@@ -18,7 +18,6 @@ import business.service.RetroMethodService;
 @WebServlet("/retro_method")
 public class RetroMethodServlet extends HttpServlet {
 
-	@SuppressWarnings("unused")
 	private RetroMethodService service = new RetroMethodService();
 
 	/**
