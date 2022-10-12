@@ -44,4 +44,8 @@ public class ShapeArea {
 	 * 正方形の面積を計算します
 	 * @return 正方形の面積
 	 */
+	public int calcSquare() {
+		return size * size;
+	}
+
 }
