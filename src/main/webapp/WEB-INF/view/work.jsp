@@ -32,6 +32,13 @@
             <hr/>
             <p>返ってきた値は．．．<c:out value="${result1}"/></p>
             <p>出るけど危険．．．${result1}</p>
+            <hr/>
+            <p>DTOつかってみると．．．</p>
+            <p>getter は変数名で取得できる：<c:out value="${resultDto.input}"/></p>
+            <p>メソッドも使える：<c:out value="${resultDto.tekito()}"/></p>
+            <p>メソッドも使える：<c:out value="${resultDto.tekito(1)}"/></p>
+            <p>DTOだけだと：<c:out value="${resultDto}"/></p>
+            <hr/>
         </div>
     </main>
 

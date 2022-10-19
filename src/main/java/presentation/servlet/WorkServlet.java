@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dto.Work;
+
 /**
  * {@link WorkServlet}
  */
@@ -35,8 +37,10 @@ public class WorkServlet extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 
-		String input1 = request.getParameter("input1"); // 入力値の取得
-		request.setAttribute("result1", "入力したのは " + input1); // 出力したい値の設定
+		String input1 = request.getParameter("input1");
+		request.setAttribute("result1", "入力したのは " + input1);
+
+		request.setAttribute("resultDto", new Work(input1));
 
 		doGet(request, response);
 	}
