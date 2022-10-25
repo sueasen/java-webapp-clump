@@ -19,11 +19,12 @@ window.addEventListener('load', (e) => {
     applyNavbar(links);
     applyCarousel(links, i);
   });
+  applyUpdateFileWait();
 });
 
 /**
  * ナビゲーションにページリンク設定
- *
+ * 
  * @param links
  *            ページリンク情報
  */
@@ -42,7 +43,7 @@ function applyNavbar(links) {
 
 /**
  * カルーセルにページリンク設定
- *
+ * 
  * @param links
  *            ページリンク情報
  * @param index
@@ -75,4 +76,45 @@ function applyCarousel(links, index) {
   carouselCaption.appendChild(carouselCaptionTitle);
   carouselCaption.appendChild(carouselCaptionDescription);
   carouselCaption.appendChild(carouselCaptionLink);
+}
+
+/**
+ * ファイル更新待ち設定
+ */
+function applyUpdateFileWait() {
+  let dom = document.querySelector('#resultFile');
+  if (!dom || !['IMG', 'VIDEO', 'AUDIO'].includes(dom.tagName)) return;
+
+  dom.onerror = () => updateSrc(dom);
+  if (dom.tagName == 'IMG') {
+    dom.onload = () => loadSrc(dom);
+  } else {
+    dom.onloadedmetadata = () => loadSrc(dom);
+  }
+
+  dom.classList.add('d-none');
+  updateSrc(dom);
+}
+
+/**
+ * ファイル更新
+ * 
+ * @param dom
+ *            メディアタグ(img, video など)
+ */
+function updateSrc(dom) {
+  let src = dom.src;
+  dom.src = '';
+  dom.src = src;
+}
+
+/**
+ * ファイル表示
+ * 
+ * @param dom
+ *            メディアタグ(img, video など)
+ */
+function loadSrc(dom) {
+  document.querySelector('#resultFileLoading').classList.add('d-none');
+  dom.classList.remove("d-none");
 }

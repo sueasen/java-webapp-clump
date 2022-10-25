@@ -8,12 +8,17 @@ public class Work {
 	/** 入力値 */
 	private String input;
 
+	/** ファイルパス */
+	private String filePath;
+
 	/**
 	 * コンストラクタ
 	 * @param input 入力値
+	 * @param input ファイルパス
 	 */
-	public Work(String input) {
+	public Work(String input, String filePath) {
 		this.input = input;
+		this.filePath = filePath;
 	}
 
 	/**
@@ -30,6 +35,22 @@ public class Work {
 	 */
 	public void setInput(String input) {
 		this.input = input;
+	}
+
+	/**
+	 * filePath を取得します
+	 * @return filePath
+	 */
+	public String getFilePath() {
+		return filePath;
+	}
+
+	/**
+	 * filePath を設定します
+	 * @param filePath ファイルパス
+	 */
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
 	}
 
 	/**

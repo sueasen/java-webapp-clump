@@ -24,9 +24,12 @@
     <main>
         <div class="container workspace">
             <h2>Hello World!</h2>
-            <form action="web_app_work" method="post">
+            <form action="web_app_work" method="post" enctype="multipart/form-data">
                 <label>入力：</label>
                 <input type="text" name="input1" />
+                <br/>
+                <label>ファイル：</label>
+                <input type="file" name="file1" required />
                 <input type="submit" />
             </form>
             <hr/>
@@ -43,6 +46,12 @@
             <div class="back_blue">てきとうなわく</div>
             <div class="back_pink">てきとうなわく</div>
             <div class="back_green">てきとうなわく</div>
+            <hr/>
+            <p>アップロードファイルを表示してみる</p>
+            <c:if test="${!empty resultDto.filePath}">
+                <div id="resultFileLoading" class="spinner-border"></div>
+                <video id="resultFile" src="<c:url value="${resultDto.filePath}" />" controls></video>
+            </c:if>
             <hr/>
         </div>
     </main>
