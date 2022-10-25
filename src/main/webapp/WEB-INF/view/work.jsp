@@ -39,6 +39,11 @@
             <p>メソッドも使える：<c:out value="${resultDto.tekito(1)}"/></p>
             <p>DTOだけだと：<c:out value="${resultDto}"/></p>
             <hr/>
+            <div class="back_red">てきとうなわく</div>
+            <div class="back_blue">てきとうなわく</div>
+            <div class="back_pink">てきとうなわく</div>
+            <div class="back_green">てきとうなわく</div>
+            <hr/>
         </div>
     </main>
 
