@@ -19,7 +19,7 @@ window.addEventListener('load', (e) => {
     applyNavbar(links);
     applyCarousel(links, i);
   });
-  applyUpdateFileWait();
+  applyUploadFileWait();
 });
 
 /**
@@ -79,28 +79,32 @@ function applyCarousel(links, index) {
 }
 
 /**
- * ファイル更新待ち設定
+ * アップロードファイル更新待ち設定
  */
-function applyUpdateFileWait() {
-  let dom = document.querySelector('#resultFile');
-  if (!dom || !['IMG', 'VIDEO', 'AUDIO'].includes(dom.tagName)) return;
+function applyUploadFileWait() {
+  document.querySelectorAll('.upload').forEach(uploadDom => {
+    let dom = uploadDom.querySelector('.uploadFile');
+    if (!dom || !['IMG', 'VIDEO', 'AUDIO'].includes(dom.tagName)) return;
 
-  dom.onerror = () => updateSrc(dom);
-  if (dom.tagName == 'IMG') {
-    dom.onload = () => loadSrc(dom);
-  } else {
-    dom.onloadedmetadata = () => loadSrc(dom);
-  }
+    let domLoding = uploadDom.querySelector('.uploadFileLoading');
+    dom.onerror = () => updateSrc(dom);
+    if (dom.tagName == 'IMG') {
+      dom.onload = () => loadSrc(dom, domLoding);
+    } else {
+      dom.onloadedmetadata = () => loadSrc(dom, domLoding);
+    }
 
-  dom.classList.add('d-none');
-  updateSrc(dom);
+    dom.classList.add('d-none');
+    domLoding.classList.remove('d-none');
+    updateSrc(dom);
+  });
 }
 
 /**
  * ファイル更新
  * 
  * @param dom
- *            メディアタグ(img, video など)
+ *            メディアDOM(img, video など)
  */
 function updateSrc(dom) {
   let src = dom.src;
@@ -112,9 +116,12 @@ function updateSrc(dom) {
  * ファイル表示
  * 
  * @param dom
- *            メディアタグ(img, video など)
+ *            メディアDOM(img, video など)
+ * @param domLoding
+ *            ローディングDOM
  */
-function loadSrc(dom) {
-  document.querySelector('#resultFileLoading').classList.add('d-none');
+function loadSrc(dom, domLoding) {
+  domLoding.classList.add('d-none');
   dom.classList.remove("d-none");
 }
+

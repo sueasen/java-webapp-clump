@@ -23,35 +23,40 @@
 
     <main>
         <div class="container workspace">
-            <h2>Hello World!</h2>
-            <form action="web_app_work" method="post" enctype="multipart/form-data">
-                <label>入力：</label>
-                <input type="text" name="input1" />
+            <form action="upload_file" method="post" enctype="multipart/form-data">
+                <label>ファイル 画像：</label>
+                <input type="file" name="img" />
                 <br/>
-                <label>ファイル：</label>
-                <input type="file" name="file1" required />
+                <label>ファイル 音声：</label>
+                <input type="file" name="audio" />
+                <br/>
+                <label>ファイル 動画：</label>
+                <input type="file" name="video" />
+                <br/>
                 <input type="submit" />
             </form>
             <hr/>
-            <p>返ってきた値は．．．<c:out value="${result1}"/></p>
-            <p>出るけど危険．．．${result1}</p>
-            <hr/>
-            <p>DTOつかってみると．．．</p>
-            <p>getter は変数名で取得できる：<c:out value="${resultDto.input}"/></p>
-            <p>メソッドも使える：<c:out value="${resultDto.tekito()}"/></p>
-            <p>メソッドも使える：<c:out value="${resultDto.tekito(1)}"/></p>
-            <p>DTOだけだと：<c:out value="${resultDto}"/></p>
-            <hr/>
-            <div class="back_red">てきとうなわく</div>
-            <div class="back_blue">てきとうなわく</div>
-            <div class="back_pink">てきとうなわく</div>
-            <div class="back_green">てきとうなわく</div>
+            <div class="upload">
+                <p>アップロードファイル：画像</p>
+                <c:if test="${!empty resultDto.imgPath}">
+                    <div class="spinner-border d-none uploadFileLoading"></div>
+                    <img class="uploadFile" src="<c:url value="${resultDto.imgPath}" />" />
+                </c:if>
+            </div>
             <hr/>
             <div class="upload">
-                <p>アップロードファイルを表示してみる</p>
-                    <c:if test="${!empty resultDto.filePath}">
+                <p>アップロードファイル：音声</p>
+                <c:if test="${!empty resultDto.audioPath}">
                     <div class="spinner-border d-none uploadFileLoading"></div>
-                    <video class="uploadFile" src="<c:url value="${resultDto.filePath}" />" controls></video>
+                    <audio class="uploadFile" src="<c:url value="${resultDto.audioPath}" />" controls></audio>
+                </c:if>
+            </div>
+            <hr/>
+            <div class="upload">
+                <p>アップロードファイル：動画</p>
+                <c:if test="${!empty resultDto.videoPath}">
+                    <div class="spinner-border d-none uploadFileLoading"></div>
+                    <video class="uploadFile" src="<c:url value="${resultDto.videoPath}" />" controls></video>
                 </c:if>
             </div>
             <hr/>
