@@ -2,7 +2,7 @@ package business.service;
 
 import java.util.List;
 
-import business.dao.DBWorkDaoJPA;
+import business.dao.DaoJPA;
 import business.entity.DBWork;
 
 /**
@@ -11,7 +11,8 @@ import business.entity.DBWork;
 public class DBWorkService {
 
 	//DBWorkDaoJDBC dao = new DBWorkDaoJDBC();
-	DBWorkDaoJPA dao = new DBWorkDaoJPA();
+	//DBWorkDaoJPA dao = new DBWorkDaoJPA();
+	DaoJPA<DBWork, Integer> dao = new DaoJPA<>(DBWork.class);
 
 	/**
 	 * DBWork を全件取得します
@@ -41,7 +42,8 @@ public class DBWorkService {
 	public int insert(String name) {
 		DBWork dbWork = new DBWork();
 		dbWork.setName(name);
-		return dao.insert(dbWork);
+		dao.insert(dbWork);
+		return 1;
 	}
 
 	/**
@@ -58,7 +60,8 @@ public class DBWorkService {
 			return 0;
 		}
 		dbWork.setName(name);
-		return dao.update(dbWork);
+		dao.update(dbWork);
+		return 1;
 	}
 
 	/**
@@ -73,7 +76,8 @@ public class DBWorkService {
 		if (dbWork == null || !dbWork.getVersion().equals(version)) {
 			return 0;
 		}
-		return dao.delete(dbWork);
+		dao.delete(dbWork);
+		return 1;
 	}
 
 }

@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Version;
 
 @Entity(name = "DB_WORK")
-public class DBWork {
+public class DBWork implements IFEntity<Integer> {
 
 	/** ID */
 	@Id
