@@ -19,11 +19,12 @@ window.addEventListener('load', (e) => {
     applyNavbar(links);
     applyCarousel(links, i);
   });
+  applyUploadFileWait();
 });
 
 /**
  * ナビゲーションにページリンク設定
- *
+ * 
  * @param links
  *            ページリンク情報
  */
@@ -42,7 +43,7 @@ function applyNavbar(links) {
 
 /**
  * カルーセルにページリンク設定
- *
+ * 
  * @param links
  *            ページリンク情報
  * @param index
@@ -76,3 +77,51 @@ function applyCarousel(links, index) {
   carouselCaption.appendChild(carouselCaptionDescription);
   carouselCaption.appendChild(carouselCaptionLink);
 }
+
+/**
+ * アップロードファイル更新待ち設定
+ */
+function applyUploadFileWait() {
+  document.querySelectorAll('.upload').forEach(uploadDom => {
+    let dom = uploadDom.querySelector('.uploadFile');
+    if (!dom || !['IMG', 'VIDEO', 'AUDIO'].includes(dom.tagName)) return;
+
+    let domLoding = uploadDom.querySelector('.uploadFileLoading');
+    dom.onerror = () => updateSrc(dom);
+    if (dom.tagName == 'IMG') {
+      dom.onload = () => loadSrc(dom, domLoding);
+    } else {
+      dom.onloadedmetadata = () => loadSrc(dom, domLoding);
+    }
+
+    dom.classList.add('d-none');
+    domLoding.classList.remove('d-none');
+    updateSrc(dom);
+  });
+}
+
+/**
+ * ファイル更新
+ * 
+ * @param dom
+ *            メディアDOM(img, video など)
+ */
+function updateSrc(dom) {
+  let src = dom.src;
+  dom.src = '';
+  dom.src = src;
+}
+
+/**
+ * ファイル表示
+ * 
+ * @param dom
+ *            メディアDOM(img, video など)
+ * @param domLoding
+ *            ローディングDOM
+ */
+function loadSrc(dom, domLoding) {
+  domLoding.classList.add('d-none');
+  dom.classList.remove("d-none");
+}
+

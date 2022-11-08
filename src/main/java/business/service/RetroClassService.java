@@ -1,6 +1,7 @@
 package business.service;
 
 import dto.Memo;
+import dto.MemoDate;
 import dto.ShapeArea;
 
 /**
@@ -17,7 +18,7 @@ public class RetroClassService {
 	 * @return input を設定した Area
 	 */
 	public ShapeArea work1(int input) {
-		return null;
+		return new ShapeArea(input);
 	}
 
 	/**
@@ -32,7 +33,7 @@ public class RetroClassService {
 	 * @return メモ
 	 */
 	public Memo work2(String name, String message) {
-		return null;
+		return new Memo(name, message);
 	}
 
 	/**
@@ -48,7 +49,7 @@ public class RetroClassService {
 	 * @return 日付メモ
 	 */
 	public Memo work3(String name, String message) {
-		return null;
+		return new MemoDate(name, message);
 	}
 
 	/**

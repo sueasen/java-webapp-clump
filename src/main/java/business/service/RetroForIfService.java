@@ -1,7 +1,6 @@
 package business.service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * {@link RetroForIfService}
@@ -19,7 +18,13 @@ public class RetroForIfService {
 	 * @return target, input の比較結果
 	 */
 	public String work1(int target, int input) {
-		return "ここを書き換えましょう！ target : " + target + " | input : " + input;
+		if (target == input) {
+			return "正解！";
+		} else if (target > input) {
+			return "大きい．．．";
+		} else {
+			return "小さい．．．";
+		}
 	}
 
 	/**
@@ -29,7 +34,11 @@ public class RetroForIfService {
 	 * @return input までの数字を文字連結した値
 	 */
 	public String work2(int input) {
-		return "ここを書き換えましょう！ input : " + input;
+		String result = "";
+		for (int i = 0; i <= input; i++) {
+			result += i;
+		}
+		return input + " まで連結した文字列 : " + result;
 	}
 
 	/**
@@ -45,9 +54,21 @@ public class RetroForIfService {
 	 * @return targets, input の比較結果
 	 */
 	public String work3(List<Integer> targets, int input) {
-		return "ここを書き換えましょう！ " //
-				+ "targets : " + targets.stream().map(i -> Integer.toString(i)).collect(Collectors.joining(","))
-				+ " | input : " + input;
+		int sum = 0;
+		for (Integer i : targets) {
+			sum += i;
+		}
+		if (sum == input) {
+			return "大吉！ スコア : " + (input * 10);
+		} else if (targets.get(0) == input) {
+			return "中吉！ スコア : " + (input * 5);
+		} else if (targets.get(targets.size() - 1) == input) {
+			return "小吉！ スコア : " + (input * 4);
+		} else if (targets.contains(input)) {
+			return "吉！ スコア : " + input;
+		} else {
+			return "大凶．．． スコア : " + (input * -1);
+		}
 	}
 
 	/**
