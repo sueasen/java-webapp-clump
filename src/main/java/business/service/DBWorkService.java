@@ -2,7 +2,7 @@ package business.service;
 
 import java.util.List;
 
-import business.dao.DBWorkDaoJDBC;
+import business.dao.DBWorkDaoJPA;
 import business.entity.DBWork;
 
 /**
@@ -10,7 +10,8 @@ import business.entity.DBWork;
  */
 public class DBWorkService {
 
-	DBWorkDaoJDBC dao = new DBWorkDaoJDBC();
+	//DBWorkDaoJDBC dao = new DBWorkDaoJDBC();
+	DBWorkDaoJPA dao = new DBWorkDaoJPA();
 
 	/**
 	 * DBWork を全件取得します

@@ -1,14 +1,24 @@
 package business.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Version;
+
+@Entity(name = "DB_WORK")
 public class DBWork {
 
 	/** ID */
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
 	/** 名前 */
 	private String name;
 
 	/** バージョン */
+	@Version
 	private Integer version;
 
 	/**
