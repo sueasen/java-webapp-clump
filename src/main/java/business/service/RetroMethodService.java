@@ -11,7 +11,7 @@ public class RetroMethodService {
 	 * @param num1 数字1
 	 * @param num2 数字2
 	 * @param num3 数字3
-	 * @return num1, num2 を足した数字
+	 * @return num1, num2, num3 を足した数字
 	 */
 	//	public 戻り値 work1(引数...) {
 	//	}
