@@ -43,7 +43,7 @@
                         <tr>
                             <form action="./db_work_update" method="post">
                                 <td>
-                                    <i class="bi bi-person-fill"></i></button>
+                                    <i class="bi bi-person-fill"></i>
                                 </td>
                                 <td><c:out value="${dbWork.id}"/></td>
                                 <td><input type="text" name="name" size="20" value="${dbWork.name}" required placeholder="Update Name" /></td>
@@ -62,7 +62,7 @@
                     <tr>
                         <form action="./db_work_insert" method="post">
                             <td>
-                                <i class="bi bi-person"></i></button>
+                                <i class="bi bi-person"></i>
                             </td>
                             <td></td>
                             <td><input type="text" name="name" size="20" required placeholder="Create Name" /></td>
