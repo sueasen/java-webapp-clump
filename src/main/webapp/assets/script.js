@@ -9,6 +9,7 @@ const pageLinks = [
   {title:'WebAppWork', path:'./web_app_work', category:'Web Application'},
   {title:'More...', path:'#', category:'Comming Soon'},
   {title:'Sample', path:'./sample', category:'Sample'},
+  {title:'WebAPI', path:'./api_work', category:'Sample'},
 ];
 
 /**
@@ -125,3 +126,73 @@ function loadSrc(dom, domLoding) {
   dom.classList.remove("d-none");
 }
 
+/**
+ * html 読込時の処理
+ */
+window.addEventListener('load', (e) => {
+
+    // ねこ情報取得
+    document.querySelector("#apicat").addEventListener("click", () => {
+        fetch("https://aws.random.cat/meow")
+            .then(response => response.json())
+            .then(json => {
+                console.log(json);
+                document.querySelector("#apicat_json").value = JSON.stringify(json);
+                document.querySelector("#apicat_img").src = json.file;
+                document.querySelector("#apicat_img").height = 300;
+            })
+            .catch((error) => console.log(error));
+    });
+
+    // ユーザ情報取得
+    document.querySelector("#apiuser").addEventListener("click", (e) => {
+        fetch("https://randomuser.me/api")
+            .then(response => response.json())
+            .then(json => {
+                console.log(json);
+                document.querySelector("#apiuser_json").value = JSON.stringify(json);
+                document.querySelector("#apiuser_img").src = json.results[0].picture.large;
+                document.querySelector("#apiuser_img").height = 300;
+            })
+            .catch((error) => console.log(error));
+    });
+
+    // きつね情報取得
+    document.querySelector("#apifox").addEventListener("click", (e) => {
+        fetch("https://randomfox.ca/floof")
+            .then(response => response.json())
+            .then(json => {
+                console.log(json);
+                document.querySelector("#apifox_json").value = JSON.stringify(json);
+                document.querySelector("#apifox_img").src = json.image;
+                document.querySelector("#apifox_img").height = 300;
+            })
+            .catch((error) => console.log(error));
+    });
+
+    // 星座情報取得
+    document.querySelector("#apistar").addEventListener("click", (e) => {
+        fetch("https://livlog.xyz/hoshimiru/constellation?lat=35.605&lng=140.123&date=2023-1-18&hour=11&min=0")
+            .then(response => response.json())
+            .then(json => {
+                console.log(json);
+                document.querySelector("#apistar_json").value = JSON.stringify(json);
+                document.querySelector("#apistar_img").src = json.result[0].starImage;
+                document.querySelector("#apistar_img").height = 300;
+            })
+            .catch((error) => console.log(error));
+    });
+
+    // ポケモン情報取得
+    document.querySelector("#apipokemon").addEventListener("click", (e) => {
+        fetch("https://pokeapi.co/api/v2/pokemon/25")
+            .then(response => response.json())
+            .then(json => {
+                console.log(json);
+                document.querySelector("#apipokemon_json").value = JSON.stringify(json);
+                document.querySelector("#apipokemon_img").src = json.sprites.front_default;
+                document.querySelector("#apipokemon_img").height = 300;
+            })
+            .catch((error) => console.log(error));
+    });
+});
