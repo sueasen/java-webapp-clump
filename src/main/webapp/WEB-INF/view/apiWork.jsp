@@ -70,6 +70,14 @@
             <div id="apijava1_namemsg" class="border bg-light col-6">結果は．．．</div>
             <hr/>
 
+            <h4>3. Servlet から WebAPI 実行して JSON 返却</h4>
+            <button id="apijava2" class="btn btn-info">Servlet JSON 情報取得</button>
+            <p>WebAPI から取得した 情報（JSON）</p>
+            <textarea id="apijava2_json" rows="2" cols="80" disabled placeholder="結果は．．．"></textarea>
+            <p>WebAPI から取得した画像</p>
+            <img id="apijava2_img" src="">
+            <hr/>
+
         </div>
     </main>
 

@@ -208,4 +208,18 @@ window.addEventListener('load', (e) => {
             })
             .catch((error) => console.log(error));
     });
+
+    // Servlet JSON 情報取得（Servlet で API実行した結果を返却）
+    document.querySelector("#apijava2").addEventListener("click", (e) => {
+        fetch("http://localhost:8080/java-wabapp-clump/api_work_json2")
+            .then(response => response.json())
+            .then(json => {
+                console.log(json);
+                document.querySelector("#apijava2_json").value = JSON.stringify(json);
+                document.querySelector("#apijava2_img").src = json.results[0].picture.large;
+                document.querySelector("#apijava2_img").height = 300;
+            })
+            .catch((error) => console.log(error));
+    });
+
 });
