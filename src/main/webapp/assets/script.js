@@ -195,4 +195,17 @@ window.addEventListener('load', (e) => {
             })
             .catch((error) => console.log(error));
     });
+
+    // Servlet JSON 情報取得
+    document.querySelector("#apijava1").addEventListener("click", (e) => {
+        let type = document.querySelector("#apijava1_type").value;
+        fetch("http://localhost:8080/java-wabapp-clump/api_work_json1?type=" + type)
+            .then(response => response.json())
+            .then(json => {
+                console.log(json);
+                document.querySelector("#apijava1_json").value = JSON.stringify(json);
+                document.querySelector("#apijava1_namemsg").innerText = json.name + "：" + json.message;
+            })
+            .catch((error) => console.log(error));
+    });
 });

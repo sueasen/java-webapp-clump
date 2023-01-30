@@ -58,6 +58,18 @@
             <img id="apipokemon_img" src="">
             <hr/>
 
+            <h4>2. Servlet から JSON 返却（Java で WebAPI 作る）</h4>
+            <select id="apijava1_type" class="select">
+                <option value="map">MAP</option>
+                <option value="dto">Dto</option>
+            </select>
+            <button id="apijava1" class="btn btn-info">Servlet JSON 情報取得</button>
+            <p>WebAPI から取得した 情報（JSON）</p>
+            <textarea id="apijava1_json" rows="2" cols="80" disabled placeholder="結果は．．．"></textarea>
+            <p>WebAPI から取得した name : message </p>
+            <div id="apijava1_namemsg" class="border bg-light col-6">結果は．．．</div>
+            <hr/>
+
         </div>
     </main>
 
