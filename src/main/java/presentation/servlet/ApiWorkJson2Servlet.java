@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,8 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import dto.UserInfo;
 
 /**
  * {@link ApiWorkJson2Servlet}
@@ -38,12 +37,11 @@ public class ApiWorkJson2Servlet extends HttpServlet {
         InputStream stream = urlConnection.getInputStream();) {
 
       ObjectMapper mapper = new ObjectMapper();
-      JsonNode json = mapper.readTree(stream);
-      Map<String, Object> map = new HashMap<>();
-      map.put("large", json.get("results").get(0).get("picture").get("large"));
+      UserInfo userInfo = mapper.readValue(stream, UserInfo.class);
       response.setCharacterEncoding("UTF-8");
       response.setContentType("application/json");
-      response.getWriter().print(mapper.writeValueAsString(map));
+      response.getWriter().print(
+          mapper.writeValueAsString(userInfo.getResults().get(0).getPicture()));
 
     } catch (Exception e) {
       e.printStackTrace();
