@@ -71,6 +71,12 @@
             <hr/>
 
             <h4>3. Servlet から WebAPI 実行して JSON 返却</h4>
+            <select id="apijava2_type" class="select">
+                <option value="man">人</option>
+                <option value="cat">ねこ</option>
+                <option value="fox">きつね</option>
+                <option value="star">星座</option>
+            </select>
             <button id="apijava2" class="btn btn-info">Servlet JSON 情報取得</button>
             <p>WebAPI から取得した 情報（JSON）</p>
             <textarea id="apijava2_json" rows="2" cols="80" disabled placeholder="結果は．．．"></textarea>

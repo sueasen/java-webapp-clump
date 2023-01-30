@@ -211,12 +211,13 @@ window.addEventListener('load', (e) => {
 
     // Servlet JSON 情報取得（Servlet で API実行した結果を返却）
     document.querySelector("#apijava2").addEventListener("click", (e) => {
-        fetch("http://localhost:8080/java-wabapp-clump/api_work_json2")
+        let type = document.querySelector("#apijava2_type").value;
+        fetch("http://localhost:8080/java-wabapp-clump/api_work_json2?type=" + type)
             .then(response => response.json())
             .then(json => {
                 console.log(json);
                 document.querySelector("#apijava2_json").value = JSON.stringify(json);
-                document.querySelector("#apijava2_img").src = json.large;
+                document.querySelector("#apijava2_img").src = json.image;
                 document.querySelector("#apijava2_img").height = 300;
             })
             .catch((error) => console.log(error));
