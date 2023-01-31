@@ -76,3 +76,68 @@ td input:focus {
   box-shadow: 0 0 0 0 #797979;
   border-bottom: 1px solid #797979;
 }
+
+.back_red {
+  background-color: red;
+}
+.back_blue {
+  background-color: blue;
+  animation-name: animation1;          /* 定義する keyframess の名前と合わせる */
+  animation-duration: 3s;              /* 動きをつける間隔 */
+  animation-iteration-count: infinite; /* 動かす回数 infinite は無限 */
+}
+.back_pink {
+  background-color: pink;
+  animation-name: animation2;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+}
+.back_green {
+  background-color: green;
+  animation-name: animation3;
+  animation-duration: 7s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes animation1 {
+  0% {
+    width: 20%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@keyframes animation2 {
+  0% {
+    width: 10%;
+    background-color: white;
+    transform:rotate(0deg);
+  }
+  50% {
+    width: 30%;
+    background-color: pink;
+    transform:rotate(180deg);
+  }
+  100% {
+    width: 50%;
+    background-color: purple;
+    transform:rotate(360deg);
+  }
+}
+@keyframes animation3 {
+  0% {
+    width: 20%;
+    transform:rotateY(0deg);
+    opacity: 0.1;
+  }
+  50% {
+    width: 50%;
+    transform:rotateY(180deg);
+    opacity: 0.5;
+  }
+  100% {
+    width: 100%;
+    transform:rotateY(360deg);
+    opacity: 1.0;
+  }
+}

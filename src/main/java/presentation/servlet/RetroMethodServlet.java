@@ -1,6 +1,7 @@
 package presentation.servlet;
 
 import java.io.IOException;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,8 +18,6 @@ import business.service.RetroMethodService;
 @WebServlet("/retro_method")
 public class RetroMethodServlet extends HttpServlet {
 
-
-	@SuppressWarnings("unused")
 	private RetroMethodService service = new RetroMethodService();
 
 	/**
@@ -46,8 +45,8 @@ public class RetroMethodServlet extends HttpServlet {
 			int input2 = Integer.parseInt(request.getParameter("input12"));
 			int input3 = Integer.parseInt(request.getParameter("input13"));
 			// TODO
-			//			int result = service.work1(input1, input2, input3);
-			//			request.setAttribute("result1", result);
+			int result = service.work1(input1, input2, input3);
+			request.setAttribute("result1", result);
 			request.setAttribute("input11", input1);
 			request.setAttribute("input12", input2);
 			request.setAttribute("input13", input3);
@@ -55,15 +54,15 @@ public class RetroMethodServlet extends HttpServlet {
 		} else if ("2".equals(request.getParameter("workno"))) {
 			String input = request.getParameter("input2");
 			// TODO
-			//			String result = service.work2(input);
-			//			request.setAttribute("result2", result);
+			String result = service.work2(input);
+			request.setAttribute("result2", result);
 			request.setAttribute("input2", input);
 
 		} else if ("3".equals(request.getParameter("workno"))) {
 			int input = Integer.parseInt(request.getParameter("input3"));
 			// TODO
-			//			Map<String, Integer> result = service.work3(input);
-			//			request.setAttribute("result3", result);
+			Map<String, Integer> result = service.work3(input);
+			request.setAttribute("result3", result);
 			request.setAttribute("input3", input);
 
 		} else if ("4".equals(request.getParameter("workno"))) {
