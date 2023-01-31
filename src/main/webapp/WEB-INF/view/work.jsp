@@ -55,6 +55,14 @@
                 </c:if>
             </div>
             <hr/>
+            <form action="web_app_work2" method="post" enctype="multipart/form-data">
+                <label>ファイル：</label>
+                <input type="file" name="file1" required />
+                <input type="submit" />
+            </form>
+            <hr/>
+            <img src="web_app_work3" />
+            <hr/>
         </div>
     </main>
 
