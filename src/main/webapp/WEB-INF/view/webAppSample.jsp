@@ -43,7 +43,7 @@
                         <tr>
                             <form action="web_app_sample_update?id=${sample.id}" method="post">
                                 <td>
-                                    <i class="bi bi-person-fill"></i></button>
+                                    <i class="bi bi-person-fill"></i>
                                 </td>
                                 <td><c:out value="${sample.id}"/></td>
                                 <td><input type="text" name="name" size="50" value="${sample.name}" required placeholder="Update Name" /></td>
@@ -58,7 +58,7 @@
                     <tr>
                         <form action="web_app_sample_insert" method="post">
                             <td>
-                                <i class="bi bi-person"></i></button>
+                                <i class="bi bi-person"></i>
                             </td>
                             <td></td>
                             <td><input type="text" name="name" size="50" required placeholder="Create Name" /></td>
