@@ -74,6 +74,8 @@ public class ApiWorkJson2Servlet extends HttpServlet {
       JsonNode json = mapper.readTree(stream);
       Map<String, Object> map = new HashMap<>();
       map.put("image", jsonFunction.apply(json));
+      response.setCharacterEncoding("UTF-8");
+      response.setContentType("application/json");
       response.getWriter().print(mapper.writeValueAsString(map));
 
     } catch (Exception e) {
